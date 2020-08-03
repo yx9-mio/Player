@@ -3,74 +3,9 @@
   <title>MioKawaii</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/MioKawaii/web@master/logo.jpg" />
-  <style type="text/css" media="all">
-  img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 300px;
-}
-  </style>
   </head>
   <body>
-    <form id="imgur">
-    <input type="file" class="imgur" accept="image/*" data-max-size="5000" />
-</form>
-
-
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script>
-    $("document").ready(function () {
-
-        $('input[type=file]').on("change", function () {
-
-            var $files = $(this).get(0).files;
-
-            if ($files.length) {
-
-                // Reject big files
-                if ($files[0].size > $(this).data("max-size") * 10024) {
-                    console.log("Please select a smaller file");
-                    return false;
-                }
-
-                // Replace ctrlq with your own API key
-                var apiUrl = 'https://api.imgur.com/3/image';
-                var apiKey = 'd13ff5f5720e7a0';
-
-                var formData = new FormData();
-                formData.append("image", $files[0]);
-
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": apiUrl,
-                    "method": "POST",
-                    "datatype": "json",
-                    "headers": {
-                        "Authorization": "Client-ID " + apiKey
-                    },
-                    "processData": false,
-                    "contentType": false,
-                    "data": formData,
-                    beforeSend: function (xhr) {
-                        console.log("Uploading");
-                    },
-                    success: function (res) {
-                        console.log(res.data.link);
-                                                $('body').append('<p>' + res.data.link + '<p>');
-                        $('body').append('<img src="' + res.data.link + '" />');
-                    },
-                    error: function () {
-                        alert("Failed");
-                    }
-                }
-                $.ajax(settings).done(function (response) {
-                    console.log("Done");
-                });
-            }
-        });
-    });
-</script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163479712-1"></script>
 <script>
