@@ -7,7 +7,6 @@
 	  <meta property="og:image" content="https://icdn.miokawaii.tk/unsafe/imgur.com/AaWKyv7.jpg">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <script src='playerjs.js'></script>
-    <script src="https://cdn.jsdelivr.net/gh/MioCDN/js@master/Analytics.js"></script>
 	</head>
 	<body>
     <style>
@@ -18,11 +17,8 @@
     <div id="playerjs" style="width:100%;height:100%;" >
     </div>
       <script type="text/javascript">
-            
         var ps = location.href.substr(location.href.indexOf("html?")+5).split("&");
-            
         var vs = {id:"playerjs"};
-            
         for(var i = 0; i<ps.length; i++){
             var p = ps[i].substr(0,ps[i].indexOf("="));
             var v = ps[i].substr(ps[i].indexOf("=")+1);
@@ -30,12 +26,17 @@
                 vs[p] = decodeURIComponent(v);
             }
         }
-            
         var playerjs = new Playerjs(vs);
-            
       </script>
     <footer>
-      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163479712-1"></script>
+.     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163479712-1');
+      </script>
     </footer>
   </body>
 </html>
